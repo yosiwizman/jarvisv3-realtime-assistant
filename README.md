@@ -364,6 +364,49 @@ Notes for later:
 - If you want a Vercel-hosted frontend, we can add a small Next.js UI on Vercel that talks to this Streamlit backend running on a container platform. No rewrite needed now.
 - For single-container deploys, this repo already includes `Dockerfile` and `docker-compose.yml`.
 
+## Deployment (Railway & Render)
+
+This project is ready to run as a single Docker container. Platforms like **Railway** and **Render** will automatically provide a `PORT` environment variable; the Docker image uses:
+
+```bash
+streamlit run app.py --server.port=${PORT:-8501} --server.address=0.0.0.0
+```
+
+so it will listen on the port the platform expects (falling back to `8501` when running locally).
+
+### A) Railway (Docker deploy)
+
+1. Sign in to [Railway](https://railway.app/) and create a new project.
+2. Choose **Deploy from GitHub** and connect your GitHub account.
+3. Select the repo: `yosiwizman/jarvisv3-realtime-assistant`.
+4. When asked how to deploy, choose **Dockerfile** (Railway will detect the `Dockerfile` in the repo root).
+5. In the Railway project settings, open the **Variables / Environment** section and add:
+   - `OPENAI_API_KEY` → set this to your real OpenAI API key.
+6. Leave the `PORT` variable to whatever Railway sets automatically (do **not** hardcode it). The container command already uses `${PORT:-8501}`.
+7. Click **Deploy**. Railway will build the Docker image and start the service.
+8. Once deployment is successful, open the Railway-provided URL to access Jarvis in your browser.
+
+Notes:
+- You **do not** need a `railway.json` file for this simple Docker-based deploy.
+- Never commit `.env` or your API key; keep them in Railway's dashboard only.
+
+### B) Render (Docker deploy)
+
+1. Sign in to [Render](https://render.com/).
+2. Click **New** → **Web Service**.
+3. Choose **Build and deploy from a Git repository** and connect your GitHub account.
+4. Select the `jarvisv3-realtime-assistant` repo and the `main` branch.
+5. For **Runtime**, choose **Docker** (Render will detect the `Dockerfile` in the root).
+6. In the **Environment** / **Env Vars** section, add:
+   - `OPENAI_API_KEY` → set this to your real OpenAI API key.
+7. Leave the `PORT` setting alone; Render will inject `PORT` automatically. The Dockerfile's start command already respects `${PORT:-8501}`.
+8. Click **Create Web Service** and wait for the build and deploy to finish.
+9. Open the URL Render provides to use Jarvis in your browser.
+
+Notes:
+- You do **not** need a custom `render.yaml` for this basic Docker deployment.
+- `.env` remains local-only; in the cloud you configure env vars in Render's dashboard.
+
 ## 🗺️ Roadmap
 
 Future enhancements planned:

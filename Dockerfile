@@ -58,12 +58,12 @@ gatherUsageStats = false\n\
 [theme]\n\
 base = \"dark\"\n" > .streamlit/config.toml
 
-# Expose Streamlit default port
+# Expose Streamlit default port (container listens on $PORT, defaults to 8501)
 EXPOSE 8501
 
-# Health check to ensure app is running
+# Health check to ensure app is running on the same port the platform provides
 HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
-    CMD curl -f http://localhost:8501/_stcore/health || exit 1
+    CMD curl -f http://localhost:${PORT:-8501}/_stcore/health || exit 1
 
-# Run the application
-CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+# Run the application (honors PORT env var used by Railway/Render)
+CMD ["sh", "-c", "streamlit run app.py --server.port=${PORT:-8501} --server.address=0.0.0.0"]
