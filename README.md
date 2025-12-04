@@ -131,6 +131,11 @@ streamlit run app.py
 
 Jarvis will open in your default browser at `http://localhost:8501`
 
+### Stopping Jarvis (panic button)
+
+If Jarvis ever gets stuck or your browser cannot connect, you can run `stop-jarvis.ps1` from the project folder to cleanly stop the Streamlit server.
+If you created the optional **Stop Jarvis V3** desktop shortcut, double-clicking it does the same thing.
+
 ---
 
 ## 🐳 Docker Setup (Alternative)
