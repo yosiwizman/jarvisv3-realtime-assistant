@@ -158,6 +158,21 @@ docker-compose up
 
 Access Jarvis at `http://localhost:8501`
 
+## Docker: Local Test (Railway/Render Simulation)
+
+If you want to quickly simulate how JarvisV3 will run on platforms like Railway or Render, you can use:
+
+- `test-jarvis-docker.ps1` (PowerShell)
+- The optional **Test Jarvis V3 Docker** desktop shortcut
+
+This script:
+- Builds the Docker image from this repo
+- Runs it on `http://localhost:8585` with `PORT=8501` inside the container
+- Checks that the UI is reachable
+- Stops and removes the test container when finished
+
+This is only a local verification tool; real cloud deploys will still pass secrets (like `OPENAI_API_KEY`) via environment variables configured on the provider (Railway/Render), not via git.
+
 ---
 
 ## 📖 Usage Guide
