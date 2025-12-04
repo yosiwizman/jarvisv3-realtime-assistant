@@ -389,6 +389,7 @@ Notes for later:
 This project is ready to run as a single Docker container. Platforms like **Railway** and **Render** will automatically provide a `PORT` environment variable; the Docker image uses:
 
 See `JARVIS_CLOUD_ENV_VARS.md` for the full list of environment variables to configure for local `.env` and cloud providers (Railway/Render).
+For a quick pre-release sanity check, see `JARVIS_RELEASE_CHECKLIST.md` (and optionally run `run-jarvis-qa.ps1`).
 
 ```bash
 streamlit run app.py --server.port=${PORT:-8501} --server.address=0.0.0.0
