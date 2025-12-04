@@ -1,0 +1,118 @@
+# ========================================
+# JarvisV3 Git Ignore Rules
+# ========================================
+
+# ========================================
+# Secrets & Environment Variables
+# ========================================
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+
+# ========================================
+# Python
+# ========================================
+# Virtual Environments
+venv/
+env/
+ENV/
+.venv/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# ========================================
+# Streamlit
+# ========================================
+.streamlit/
+
+# ========================================
+# IDEs & Editors
+# ========================================
+# VS Code
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# ========================================
+# Operating System
+# ========================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.directory
+.Trash-*
+
+# ========================================
+# Logs & Temporary Files
+# ========================================
+*.log
+logs/
+*.tmp
+*.temp
+
+# ========================================
+# Docker (optional - uncomment if not using Docker)
+# ========================================
+# docker-compose.override.yml
