@@ -353,6 +353,17 @@ Having issues? Here's how to get help:
 
 ---
 
+## 🚀 Deployment Options
+
+JarvisV3 is a Python/Streamlit application. Vercel is optimized for Node/Next.js, so the simplest deployment paths today are container-based platforms. You have two straightforward options:
+
+- Docker on a container host: Fly.io, Railway, Render, Google Cloud Run, Azure Container Apps, AWS App Runner, or a VPS.
+- Traditional VM/server: Install Docker and run `docker-compose up -d`.
+
+Notes for later:
+- If you want a Vercel-hosted frontend, we can add a small Next.js UI on Vercel that talks to this Streamlit backend running on a container platform. No rewrite needed now.
+- For single-container deploys, this repo already includes `Dockerfile` and `docker-compose.yml`.
+
 ## 🗺️ Roadmap
 
 Future enhancements planned:
